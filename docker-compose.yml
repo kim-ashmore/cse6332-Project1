@@ -1,0 +1,14 @@
+# One command:  docker compose up --build
+# Public link:  docker compose logs tunnel | grep trycloudflare.com
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8000"          # local preview: http://localhost:8080
+    restart: unless-stopped
+
+  tunnel:                    # temporary public https://<random>.trycloudflare.com link, no account needed
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate --url http://web:8000
+    depends_on: [web]
+    restart: unless-stopped

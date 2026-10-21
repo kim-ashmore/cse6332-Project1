@@ -1,0 +1,75 @@
+:root {
+  --ink-900: #150b29;
+  --ink-800: #1b0f33;
+  --ink-700: #2a1850;
+  --ink-600: #3d2670;
+  --lav-100: #f1ecff;
+  --lav-200: #e2d9ff;
+  --lav-300: #cdbdff;
+  --lav-400: #b39dff;
+  --accent: #b39dff;
+  --radius: 18px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 50% -10%, var(--ink-600), transparent 70%), var(--ink-800);
+  color: var(--lav-200);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.hero { text-align: center; padding: 88px 20px 56px; max-width: 760px; margin: 0 auto; }
+.eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; color: var(--lav-400); margin: 0 0 12px; }
+h1 { font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1.05; margin: 0 0 16px; color: var(--lav-100); letter-spacing: -.02em; }
+.lede { font-size: 1.1rem; color: var(--lav-300); margin: 0 auto 28px; max-width: 52ch; }
+.cta {
+  display: inline-block; padding: 12px 26px; border-radius: 999px; text-decoration: none; font-weight: 600;
+  background: var(--lav-300); color: var(--ink-800); transition: transform .15s, background .15s;
+}
+.cta:hover { background: var(--lav-100); transform: translateY(-2px); }
+.cta:focus-visible, .thumb:focus-visible, .lb-btn:focus-visible, dialog button:focus-visible { outline: 3px solid var(--lav-100); outline-offset: 3px; }
+
+.grid {
+  display: grid; gap: 22px; padding: 16px 20px 72px; max-width: 1180px; margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr));
+}
+.card {
+  display: grid; grid-template-columns: minmax(130px, 42%) 1fr; align-items: stretch;
+  background: linear-gradient(160deg, var(--ink-700), var(--ink-800));
+  border: 1px solid rgba(205, 189, 255, .16); border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 10px 30px rgba(8, 3, 20, .45); transition: transform .2s, border-color .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(205, 189, 255, .45); }
+.thumb { all: unset; display: block; cursor: zoom-in; aspect-ratio: 3 / 4; background: var(--ink-900); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.card:hover .thumb img { transform: scale(1.04); }
+.thumb { overflow: hidden; }
+.body { padding: 22px 22px 22px 20px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+time { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--lav-400); }
+h2 { margin: 2px 0 6px; font-size: 1.3rem; color: var(--lav-100); line-height: 1.2; }
+.body p { margin: 0; color: var(--lav-300); }
+
+footer { text-align: center; padding: 28px 20px 48px; color: var(--lav-400); font-size: .85rem; border-top: 1px solid rgba(205,189,255,.12); }
+
+dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; color: var(--lav-100); }
+dialog::backdrop { background: rgba(14, 6, 30, .92); backdrop-filter: blur(6px); }
+dialog figure { margin: 0; display: grid; justify-items: center; gap: 12px; padding: 24px; }
+dialog img { max-width: min(92vw, 900px); max-height: 80vh; border-radius: 12px; box-shadow: 0 20px 60px #000a; }
+figcaption { font-size: 1rem; color: var(--lav-200); text-align: center; }
+dialog button { all: unset; position: fixed; cursor: pointer; color: var(--lav-100); background: rgba(61,38,112,.8); width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-size: 28px; line-height: 1; }
+dialog button:hover { background: var(--ink-600); }
+.close { top: 18px; right: 18px; }
+.prev { left: 14px; top: 50%; transform: translateY(-50%); }
+.next { right: 14px; top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 520px) {
+  .card { grid-template-columns: 1fr; }
+  .thumb { aspect-ratio: 4 / 3; }
+  .hero { padding-top: 64px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+.notice { max-width: 760px; margin: 0 auto 8px; padding: 12px 18px; border: 1px dashed var(--lav-400); border-radius: 12px; color: var(--lav-200); text-align: center; background: rgba(61,38,112,.35); }
+.notice code { color: var(--lav-100); }
+footer a { color: var(--lav-300); }
